@@ -1,0 +1,34 @@
+calls = 0  # Создаем переменную calls
+
+
+def count_calls():  # Создание первой функции
+    global calls  # Использование глобальной переменной.
+    calls += 1  # Изменяем в ней значение
+
+
+def string_info(string):  # Создаем функцию string_info.
+    stroke = str(string)  # Присваиваем stroke, значение str.(строка)
+    result = (len(stroke)), stroke.upper(), stroke.lower()  # Cчитаем количество букв общее, в верхнем и нижнем регистре
+    count_calls()  # Обращение к функции count calls
+    return result
+
+
+def is_contains(string, list_to_search):  # Создание функции  is_contains с двумя параметрами string и list_to_search
+    string = str(string).upper()  # Создание строки в верхнем регистре
+    list_to_search = list(list_to_search)  # Cоздание списка
+    count_calls()  # Обращение к функции
+    for i in range(len(list_to_search)):
+        if str(list_to_search[i]).upper() == string:  # Приводи все строки в верхний  регистр
+            result = True  # Строка присутсвует в списке
+            break  # Конец операции
+        else:  # Иначе
+            result = False  # Cтрока отсутсвует в списке
+            continue
+    return result
+
+
+print(string_info('Capybara')) #Выводим количество букв,слово в верхнем и нижнем регистре
+print(string_info('Armageddon')) #Выводим количество букв,слово в верхнем и нижнем регистре
+print(is_contains('Urban', ['ban', 'BaNaN', 'urBAN']))  # Urban ~ urBAN Проверяем находится слово в нашем списке
+print(is_contains('cycle', ['recycling', 'cyclic']))  # No matches #Проверяем находится слово в нашем списке
+print(calls) #Выводим все на экран 
